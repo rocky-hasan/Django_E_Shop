@@ -26,3 +26,7 @@ class CategoryView(View):
         except Category.DoesNotExist:
             messages.success(request, "That Category Doesn't Exist...")
             return redirect('home')
+class CategorySummaryView(View):
+    def get(self,request):
+        categories=Category.objects.all()
+        return render(request, 'category_summary.html',{'categories':categories})
